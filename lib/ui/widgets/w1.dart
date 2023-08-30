@@ -1,17 +1,23 @@
+import 'package:f_getxstate_demo/ui/controllers/count_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class W1 extends StatelessWidget {
   const W1({super.key});
 
   @override
   Widget build(BuildContext context) {
+    CountController controller = Get.find();
+
     return Container(
       color: Colors.amber,
-      child: const Column(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('Value'),
-          ElevatedButton(onPressed: null, child: Text('Increment'))
+          Obx(() => Text("${controller.count}")),
+          ElevatedButton(
+              onPressed: () => controller.incremet(),
+              child: const Text('Increment'))
         ],
       ),
     );
